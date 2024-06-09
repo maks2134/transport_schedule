@@ -3,6 +3,7 @@
 #include "createTransport.h"
 #include "findTransport.h"
 #include "removeTransport.h"
+#include "findstop.h"
 
 void createTransport(){
     ClearConsole();
@@ -12,6 +13,11 @@ void createTransport(){
 void findTransport(){
     ClearConsole();
     find();
+}
+
+void findStop(){
+    ClearConsole();
+    finding();
 }
 
 void removeTransport(){

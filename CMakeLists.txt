@@ -17,4 +17,6 @@ add_executable(transport_schedule main.c
         schedule.h
         removeTransport.c
         removeTransport.h
+        findstop.c
+        findstop.h
 )

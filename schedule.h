@@ -1,10 +1,13 @@
 #ifndef TRANSPORT_SCHEDULE_SCHEDULE_H
 #define TRANSPORT_SCHEDULE_SCHEDULE_H
+
 struct Schedule {
-    int number;
+    char *number;
     char **stops;
     char **times;
     int stopCount;
-    struct Schedule *left, *right;
+    struct Schedule *left;
+    struct Schedule *right;
 };
-#endif
+
+#endif //TRANSPORT_SCHEDULE_SCHEDULE_H

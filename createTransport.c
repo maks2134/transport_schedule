@@ -13,8 +13,10 @@ void create() {
     schedule.stops = NULL;
     schedule.times = NULL;
 
-    printf("Введите номер автобуса: ");
-    scanf("%d", &schedule.number);
+    char number[10];
+    printf("Введите номер транспорта (например, 4A): ");
+    scanf("%s", number);
+    schedule.number = strdup(number);
 
     int choice;
     do {
@@ -44,7 +46,7 @@ void create() {
 
     } while (choice == 1);
 
-    fprintf(file, "%d bus\n", schedule.number);
+    fprintf(file, "%s \n", schedule.number);
     for (int i = 0; i < schedule.stopCount; i++) {
         fprintf(file, "%s %s\n", schedule.stops[i], schedule.times[i]);
     }
@@ -58,6 +60,7 @@ void create() {
     }
     free(schedule.stops);
     free(schedule.times);
+    free(schedule.number);
 
     printf("Информация успешно записана в файл.\n");
 }

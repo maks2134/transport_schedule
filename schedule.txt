@@ -1,5 +1,16 @@
-45 bus
+45A
 Lebedevo 18.30
 Vokzal 18.36
 Charicina 19.00
+
+1T
+Lebedevo 20.00
+Sankt-Posy 20.14
+Orlovo 20.17
+
+2T 
+Kirova 14.00
+Atrium 14.20
+Ordjonekidze 14.30
+Arbat 14.40
 

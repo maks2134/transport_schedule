@@ -91,6 +91,12 @@ build CMakeFiles/transport_schedule.dir/removeTransport.c.obj: C_COMPILER__trans
   OBJECT_DIR = CMakeFiles\transport_schedule.dir
   OBJECT_FILE_DIR = CMakeFiles\transport_schedule.dir
 
+build CMakeFiles/transport_schedule.dir/findstop.c.obj: C_COMPILER__transport_schedule_unscanned_Debug C$:/Users/maks2/CLionProjects/transport_schedule/findstop.c || cmake_object_order_depends_target_transport_schedule
+  DEP_FILE = CMakeFiles\transport_schedule.dir\findstop.c.obj.d
+  FLAGS = -g -std=gnu11 -fdiagnostics-color=always
+  OBJECT_DIR = CMakeFiles\transport_schedule.dir
+  OBJECT_FILE_DIR = CMakeFiles\transport_schedule.dir
+
 
 # =============================================================================
 # Link build statements for EXECUTABLE target transport_schedule
@@ -99,7 +105,7 @@ build CMakeFiles/transport_schedule.dir/removeTransport.c.obj: C_COMPILER__trans
 #############################################
 # Link the executable transport_schedule.exe
 
-build transport_schedule.exe: C_EXECUTABLE_LINKER__transport_schedule_Debug CMakeFiles/transport_schedule.dir/main.c.obj CMakeFiles/transport_schedule.dir/system.c.obj CMakeFiles/transport_schedule.dir/quest.c.obj CMakeFiles/transport_schedule.dir/hooks.c.obj CMakeFiles/transport_schedule.dir/createTransport.c.obj CMakeFiles/transport_schedule.dir/findTransport.c.obj CMakeFiles/transport_schedule.dir/removeTransport.c.obj
+build transport_schedule.exe: C_EXECUTABLE_LINKER__transport_schedule_Debug CMakeFiles/transport_schedule.dir/main.c.obj CMakeFiles/transport_schedule.dir/system.c.obj CMakeFiles/transport_schedule.dir/quest.c.obj CMakeFiles/transport_schedule.dir/hooks.c.obj CMakeFiles/transport_schedule.dir/createTransport.c.obj CMakeFiles/transport_schedule.dir/findTransport.c.obj CMakeFiles/transport_schedule.dir/removeTransport.c.obj CMakeFiles/transport_schedule.dir/findstop.c.obj
   FLAGS = -g
   LINK_LIBRARIES = -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32
   OBJECT_DIR = CMakeFiles\transport_schedule.dir

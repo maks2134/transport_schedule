@@ -1,8 +1,8 @@
 #include "findTransport.h"
 
-struct Schedule* createSchedule(int number) {
+struct Schedule* createSchedule(const char* number) {
     struct Schedule* schedule = (struct Schedule*)malloc(sizeof(struct Schedule));
-    schedule->number = number;
+    schedule->number = strdup(number);
     schedule->stops = NULL;
     schedule->times = NULL;
     schedule->stopCount = 0;
@@ -14,19 +14,19 @@ struct Schedule* insert(struct Schedule* root, struct Schedule* newSchedule) {
     if (root == NULL)
         return newSchedule;
 
-    if (newSchedule->number < root->number)
+    if (strcmp(newSchedule->number, root->number) < 0)
         root->left = insert(root->left, newSchedule);
-    else if (newSchedule->number > root->number)
+    else if (strcmp(newSchedule->number, root->number) > 0)
         root->right = insert(root->right, newSchedule);
 
     return root;
 }
 
-struct Schedule* search(struct Schedule* root, int number) {
-    if (root == NULL || root->number == number)
+struct Schedule* search(struct Schedule* root, const char* number) {
+    if (root == NULL || strcmp(root->number, number) == 0)
         return root;
 
-    if (number < root->number)
+    if (strcmp(number, root->number) < 0)
         return search(root->left, number);
     else
         return search(root->right, number);
@@ -38,7 +38,7 @@ void printSchedule(struct Schedule* schedule) {
         return;
     }
 
-    printf("%d bus\n", schedule->number);
+    printf("%s \n", schedule->number);
     for (int i = 0; i < schedule->stopCount; i++) {
         printf("%s %s\n", schedule->stops[i], schedule->times[i]);
     }
@@ -54,6 +54,7 @@ void freeTree(struct Schedule* root) {
     }
     free(root->stops);
     free(root->times);
+    free(root->number);
 
     freeTree(root->left);
     freeTree(root->right);
@@ -69,8 +70,8 @@ void loadSchedules(struct Schedule** root, const char* filename) {
 
     char line[256];
     while (fgets(line, sizeof(line), file)) {
-        int number;
-        if (sscanf(line, "%d bus", &number) == 1) {
+        char number[10];
+        if (sscanf(line, "%s", number) == 1) {
             struct Schedule* schedule = createSchedule(number);
 
             while (fgets(line, sizeof(line), file) && strlen(line) > 1) {
@@ -84,24 +85,19 @@ void loadSchedules(struct Schedule** root, const char* filename) {
                 schedule->times[schedule->stopCount] = strdup(time);
                 schedule->stopCount++;
             }
-
             *root = insert(*root, schedule);
         }
     }
-
     fclose(file);
 }
 
 void find() {
     struct Schedule* root = NULL;
     loadSchedules(&root, "C:\\Users\\maks2\\CLionProjects\\transport_schedule\\schedule.txt");
-
-    int number;
-    printf("Введите номер интересующего вас транспорта: ");
-    scanf("%d", &number);
-
+    char number[10];
+    printf("Введите номер интересующего вас транспорта (например, 4A): ");
+    scanf("%s", number);
     struct Schedule* schedule = search(root, number);
     printSchedule(schedule);
-
     freeTree(root);
 }

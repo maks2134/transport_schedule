@@ -6,11 +6,12 @@
 #include <string.h>
 #include "schedule.h"
 
-// Функции для работы с бинарным деревом поиска
+struct Schedule* createSchedule(const char* number);
 struct Schedule* insert(struct Schedule* root, struct Schedule* newSchedule);
-struct Schedule* search(struct Schedule* root, int number);
+struct Schedule* search(struct Schedule* root, const char* number);
 void printSchedule(struct Schedule* schedule);
-void find();
 void freeTree(struct Schedule* root);
+void loadSchedules(struct Schedule** root, const char* filename);
+void find();
 
 #endif //TRANSPORT_SCHEDULE_FINDTRANSPORT_H
